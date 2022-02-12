@@ -1,1 +1,1 @@
-# personal-bank(https://sshipon.github.io/personal-bank/)
+# personal-bank(my-bank-limited.netlify.app)
