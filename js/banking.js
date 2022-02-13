@@ -31,19 +31,23 @@ function updateBalance(amount, isAdd) {
 //deposit balance
 document.getElementById("deposit-button")
   .addEventListener("click", function () {
-    
     const depositAmount = getInputValue("deposit-input");
-     updateTotalField("deposit-total", depositAmount);
-     updateBalance(depositAmount, true);
+    if (depositAmount > 0) {
+      updateTotalField("deposit-total", depositAmount);
+      updateBalance(depositAmount, true);
+    }
+     
    
   });
 
 //caseOut withdraw
 document.getElementById("withdraw-button")
   .addEventListener("click", function () {
-
-     const withdrawAmount = getInputValue("withdraw-input");
-    updateTotalField("withdraw-total", withdrawAmount);
+    
+    const withdrawAmount = getInputValue("withdraw-input");
+    if (withdrawAmount > 0) {
+      updateTotalField("withdraw-total", withdrawAmount);
     updateBalance(withdrawAmount, false)
+    }
   
   });
