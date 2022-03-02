@@ -16,11 +16,16 @@ function updateTotalField(totalFiledId  ,amount) {
   totalElement.innerText = previousTotal + amount;
 }
 
+function getCurrentBalance() {
+  const balanceTotal = document.getElementById("balance-total");
+  const balanceTotalText = balanceTotal.innerText;
+  const balanceTotalAmount = parseFloat(balanceTotalText);
+  return balanceTotalAmount;
+}
+
 function updateBalance(amount, isAdd) {
-  
-    const balanceTotal = document.getElementById("balance-total");
-    const balanceTotalText = balanceTotal.innerText;
-    const balanceTotalAmount = parseFloat(balanceTotalText);
+  const balanceTotal = document.getElementById("balance-total");
+  const balanceTotalAmount = getCurrentBalance();
   if (isAdd == true) {
        balanceTotal.innerText = balanceTotalAmount + amount;
   }
@@ -45,7 +50,8 @@ document.getElementById("withdraw-button")
   .addEventListener("click", function () {
     
     const withdrawAmount = getInputValue("withdraw-input");
-    if (withdrawAmount > 0) {
+       const withdrawBalance = getCurrentBalance()
+    if (withdrawAmount > 0 && withdrawAmount < withdrawBalance ) {
       updateTotalField("withdraw-total", withdrawAmount);
     updateBalance(withdrawAmount, false)
     }
